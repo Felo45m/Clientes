@@ -28,12 +28,12 @@ public class Client implements Serializable {
 	private Integer id;
 	
 	@Column(nullable = false, length = 150)
-	@NotEmpty
+	@NotEmpty(message = "{field.name.mandatory}")
 	private String name;
 	
 	@Column(nullable = false, length = 11)
-	@NotNull
-	@CPF
+	@NotNull(message = "{field.cpf.mandatory}")
+	@CPF(message = "{invalid.cpf.field}")
 	private String cpf;
 	
 	@Column(name = "registration_date", updatable = false)

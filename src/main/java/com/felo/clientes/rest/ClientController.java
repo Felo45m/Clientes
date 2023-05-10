@@ -16,6 +16,8 @@ import org.springframework.web.server.ResponseStatusException;
 import com.felo.clientes.model.entities.Client;
 import com.felo.clientes.model.repositories.ClientRepository;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/api/clients")
 public class ClientController {
@@ -29,7 +31,7 @@ public class ClientController {
 
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	public Client saveClient(@RequestBody Client client) {
+	public Client saveClient(@RequestBody @Valid Client client) {
 		return repository.save(client);
 	}
 	
