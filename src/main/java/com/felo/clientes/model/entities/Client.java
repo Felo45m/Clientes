@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
 
+import org.hibernate.validator.constraints.br.CPF;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import jakarta.persistence.Column;
@@ -13,6 +15,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "tb_client")
@@ -24,12 +28,15 @@ public class Client implements Serializable {
 	private Integer id;
 	
 	@Column(nullable = false, length = 150)
+	@NotEmpty
 	private String name;
 	
 	@Column(nullable = false, length = 11)
+	@NotNull
+	@CPF
 	private String cpf;
 	
-	@Column(name = "registration_date")
+	@Column(name = "registration_date", updatable = false)
 	@JsonFormat(pattern = "dd/MM/yyyy")
 	private LocalDate registrationDate;
 	
