@@ -2,6 +2,7 @@ package com.felo.clientes.model.entities;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.Objects;
 
 import jakarta.persistence.Column;
@@ -30,17 +31,20 @@ public class Service implements Serializable {
 	private Client client;
 
 	@Column
-	private BigDecimal valor;
+	private BigDecimal price;
+	
+	@Column
+	private LocalDate date;
 
 	public Service() {
 		
 	}
 	
-	public Service(Integer id, String description, Client client, BigDecimal valor) {
+	public Service(Integer id, String description, Client client, BigDecimal price) {
 		this.id = id;
 		this.description = description;
 		this.client = client;
-		this.valor = valor;
+		this.price = price;
 	}
 
 	public Integer getId() {
@@ -67,12 +71,20 @@ public class Service implements Serializable {
 		this.client = client;
 	}
 
-	public BigDecimal getValor() {
-		return valor;
+	public BigDecimal getPrice() {
+		return price;
 	}
 
-	public void setValor(BigDecimal valor) {
-		this.valor = valor;
+	public void setPrice(BigDecimal price) {
+		this.price = price;
+	}
+
+	public LocalDate getDate() {
+		return date;
+	}
+
+	public void setDate(LocalDate date) {
+		this.date = date;
 	}
 
 	@Override
