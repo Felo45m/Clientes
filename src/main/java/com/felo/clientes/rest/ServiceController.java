@@ -21,6 +21,8 @@ import com.felo.clientes.model.repositories.ServiceRepository;
 import com.felo.clientes.rest.dto.ServiceDTO;
 import com.felo.clientes.util.BigDecimalConverter;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/api/servicos-prestados")
 public class ServiceController {
@@ -37,7 +39,7 @@ public class ServiceController {
 
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	public Service save(@RequestBody ServiceDTO dto) {
+	public Service save(@RequestBody @Valid ServiceDTO dto) {
 		
 		LocalDate date = LocalDate.parse(dto.getDate(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
 		

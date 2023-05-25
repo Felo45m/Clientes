@@ -2,11 +2,21 @@ package com.felo.clientes.rest.dto;
 
 import java.util.Objects;
 
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+
 public class ServiceDTO {
 
+	@NotEmpty(message = "{field.description.mandatory}")
 	private String description;
+	
+	@NotEmpty(message = "{field.price.mandatory}")
 	private String price;
+	
+	@NotEmpty(message = "{field.date.mandatory}")
 	private String date;
+	
+	@NotNull(message = "{field.client.mandatory}")
 	private Integer clientId;
 	
 	public ServiceDTO() {
